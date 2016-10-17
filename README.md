@@ -3,7 +3,7 @@
 
 实现无限轮播。
 
-使用方法：
+##使用方法：
 
 
         BannerView adView = (BannerView) findViewById(R.id.ad);
@@ -14,7 +14,7 @@
         strings.add("http://pic36.nipic.com/20131213/7755667_223712251391_2.jpg");
         strings.add("http://pic81.nipic.com/file/20151028/22036204_104827200000_2.jpg");
         strings.add("http://pic67.nipic.com/file/20150515/12973503_100930685000_2.jpg");
-        adView.addUrl(strings);
+        adView.addUrl(strings);//设置显示图片地址
         List<String> titles = new ArrayList<>();
         titles.add("0000");
         titles.add("111");
@@ -24,27 +24,23 @@
         titles.add("5555");
         titles.add("6666666666666666");
         titles.add("777777777777777777");
-        adView.addTitles(titles);
+        adView.addTitles(titles);// 设置显示 标题
         adView.setTextSize(16.0f,Color.GREEN);//设置文本字体大小和颜色
-        adView.setTextGravity(BannerView.Gravity.CENTER);
+        adView.setTextGravity(BannerView.Gravity.CENTER);// 设置文本对齐方式
            adView.setIndicatorGravity(BannerView.Gravity.RIGHT);//设置圆点对齐方式
             adView.setIndicatorColor(Color.RED,Color.BLUE);//圆点指引器颜色
-        
         adView.setDefulatTime(2000);//设置自动切换间隔时间
-        
-         /**
-           * 底部文字和 圆点背景颜色，默认没有设置
-           */
-        adView.setFooterBackGround(Color.parseColor("#6F6B6B6B"));
-
+        adView.setFooterBackGround(Color.parseColor("#6F6B6B6B"));//底部文字和 圆点背景颜色，默认没有设置
          adView.setImageViewLoadLinstener(new BannerView.ImageViewLoad() {
             @Override
                public void ImageLoad(ImageView view, String url) {
+               //图片加载回调
                   Glide.with(MainActivity.this).load(url).error(R.mipmap.ad).dontAnimate().into(view);
                 }
 
                  @Override
                 public void ImageClick(int index) {
+                //点击事件回调
                     Log.e(TAG, "ImageClick: " + index);
                 }
         });
