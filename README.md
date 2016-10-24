@@ -1,7 +1,7 @@
 # BannerView
 安卓轮播图无限轮播实现
 
-实现无限轮播。
+实现无限轮播，基于纯代码实现，只需要将java文件 放入项目，就可以直接使用
 
 ##使用方法：
 
@@ -26,12 +26,20 @@
         titles.add("777777777777777777");
         adView.addTitles(titles);// 设置显示 标题
         adView.setTextSize(16.0f,Color.GREEN);//设置文本字体大小和颜色
+
         adView.setTextGravity(BannerView.Gravity.CENTER);// 设置文本对齐方式
-           adView.setIndicatorGravity(BannerView.Gravity.RIGHT);//设置圆点对齐方式
-            adView.setIndicatorColor(Color.RED,Color.BLUE);//圆点指引器颜色
+
+        adView.setIndicatorGravity(BannerView.Gravity.RIGHT);//设置圆点对齐方式
+
+        adView.setIndicatorColor(Color.RED,Color.BLUE);//圆点指引器颜色
+
         adView.setDefulatTime(2000);//设置自动切换间隔时间
+        
+        
         adView.setFooterBackGround(Color.parseColor("#6F6B6B6B"));//底部文字和 圆点背景颜色，默认没有设置
-         adView.setImageViewLoadLinstener(new BannerView.ImageViewLoad() {
+        
+        
+        adView.setImageViewLoadLinstener(new BannerView.ImageViewLoad() {
             @Override
                public void ImageLoad(ImageView view, String url) {
                //图片加载回调
