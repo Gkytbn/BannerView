@@ -2,6 +2,10 @@
 
 ##实现无限轮播，基于纯代码实现，只需要将java文件 放入项目，就可以直接使用
 
+
+![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots2.png)
+
+
 ##使用方法：
 
 
