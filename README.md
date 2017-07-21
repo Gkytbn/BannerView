@@ -77,5 +77,4 @@
            Log.e(TAG, "ImageClick: " + index);
      }
      });
-     
-     、、、
+、、、
