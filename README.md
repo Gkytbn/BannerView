@@ -82,7 +82,7 @@
 ```
 
 
-![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots1.png)
+![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots.png)
 
 ![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots2.png)
 
@@ -127,9 +127,9 @@
         
     adView.setTextSize(16.0f,Color.GREEN);//设置文本字体大小和颜色
 
-    adView.setTextGravity(BannerView.Gravity.CENTER);// 设置文本对齐方式
+    adView.setTextGravity(BannerView.CENTER);// 设置文本对齐方式
 
-    adView.setIndicatorGravity(BannerView.Gravity.RIGHT);//设置圆点对齐方式
+    adView.setIndicatorGravity(BannerView.RIGHT);//设置圆点对齐方式
 
     adView.setIndicatorColor(Color.RED,Color.BLUE);//圆点指引器颜色
 
