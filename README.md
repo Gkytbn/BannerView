@@ -4,19 +4,94 @@
 
 轮播文字信息，指引器均由代码实现，性能优异。
 
+```
+
+    /**
+     * 绘制 底部圆点信息和title，绘制信息要在子空间前面，所以放在后面绘制，每一次更新ui，就会调用。
+     * 很方便实现底部信息对应。
+     *
+     * @param canvas
+     */
+    @Override
+    protected void dispatchDraw(Canvas canvas) {
+        super.dispatchDraw(canvas);
+        int count = urls.size() >= 2 ? urls.size() - 2 : urls.size();
+        float RectHight = getMeasuredHeight() * 0.2f;//矩形的高度
+
+        if (this.mFooterBackGroundEnable) {
+            paint.setColor(mFooterBackGroundColor);
+            canvas.drawRect(0, getMeasuredHeight() - RectHight, getMeasuredWidth(), getMeasuredHeight(), paint);
+        }
+        float circleRSize = RectHight * 0.15f;
+        float magin = circleRSize * 1.5f;
+
+        float x = 0;
+
+        if (this.mIndicatorGravity == Gravity.CENTER) {
+            x = (getMeasuredWidth() - count * circleRSize * 2 - (count - 1) * magin) * 0.5f;
+        } else if (this.mIndicatorGravity == Gravity.LEFT) {
+            x = magin;
+        } else if (this.mIndicatorGravity == Gravity.RIGHT) {
+
+            x = getMeasuredWidth() - count * circleRSize * 2 - count * magin;
+        }
+
+        float cY = getMeasuredHeight() - RectHight + RectHight * 0.5f;
+        float cX = x + circleRSize;
 
 
+        for (int i = 1; i < count + 1; i++) {
+            if (viewPager.getCurrentItem() == i) {
+                paint.setColor(mIndicatorSelectColor);
+            } else {
+                paint.setColor(mIndicatorNormalColor);
+            }
+            if (i != 1) {
+                cX += circleRSize * 2 + magin;
+            }
+            canvas.drawCircle(cX, cY, circleRSize, paint);
+        }
+
+        if (titles.size() - 1 >= viewPager.getCurrentItem()) {
+
+            String s;
+            //避免因为index重复 取到错误的标题
+            if (myPagerAdapter.getCount() - 1 == viewPager.getCurrentItem()) {
+                s = titles.get(1);
+            } else if (viewPager.getCurrentItem() == 0) {
+                s = titles.get(imgs.size() - 2);
+            } else {
+                s = titles.get(viewPager.getCurrentItem());
+            }
+            paint.setColor(mTextColor);
+            Rect mTextBound = new Rect();
+            paint.getTextBounds(s, 0, s.length(), mTextBound);
+            paint.setTextSize(this.mTextSize);
+            float textX = 0.0f;
+            float textY = getMeasuredHeight() - (RectHight - mTextBound.height()) * 0.5f;
+            if (this.mTextGravity == Gravity.LEFT) {
+                textX = magin;
+            } else if (this.mTextGravity == Gravity.RIGHT) {
+                textX = getMeasuredWidth() - mTextBound.width() - magin;
+            } else if (this.mTextGravity == Gravity.CENTER) {
+                textX = getMeasuredWidth() * 0.5f - mTextBound.width() * 0.5f;
+            }
+            canvas.drawText(s, textX, textY, paint);
+        }
+    }
+```
 
 
+![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots1.png)
 
 ![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots2.png)
 
 使用方法：
 
 ```
-      BannerView adView = (BannerView) findViewById(R.id.ad);
+    BannerView adView = (BannerView) findViewById(R.id.ad);
 
-      List<String> strings = new ArrayList<>();
+    List<String> strings = new ArrayList<>();
         
     strings.add("http://pic74.nipic.com/file/20150813/10634318_132510392000_2.jpg");
         
@@ -76,5 +151,5 @@
       //点击事件回调
            Log.e(TAG, "ImageClick: " + index);
      }
-     });
-、、、
+     });
+```
