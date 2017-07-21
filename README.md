@@ -2,15 +2,21 @@
 
 实现无限轮播，基于纯代码实现，只需要将java文件 放入项目，就可以直接使用
 
+轮播文字信息，指引器均由代码实现，性能优异。
+
+
+
+
+
 
 ![image](https://github.com/Gkytbn/BannerView/blob/master/screenshots2.png)
 
 使用方法：
 
+```
+      BannerView adView = (BannerView) findViewById(R.id.ad);
 
-    BannerView adView = (BannerView) findViewById(R.id.ad);
-
-    List<String> strings = new ArrayList<>();
+      List<String> strings = new ArrayList<>();
         
     strings.add("http://pic74.nipic.com/file/20150813/10634318_132510392000_2.jpg");
         
@@ -71,3 +77,5 @@
            Log.e(TAG, "ImageClick: " + index);
      }
      });
+     
+     、、、
